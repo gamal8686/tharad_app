@@ -27,7 +27,7 @@ class AppImage extends StatelessWidget {
     }
     if (path.endsWith('png')) {
       return Image.asset(
-        'assets/images/$path',
+        'assets/png/$path',
         height: height,
         width: width,
         errorBuilder: (context, error, stackTrace) => Text('55'),

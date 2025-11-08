@@ -73,15 +73,15 @@ class _AppInpotState extends State<AppInpot> {
                 decoration: InputDecoration(
                   suffixIcon: Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 12,
+                      // horizontal: 12,
+                      // vertical: 12,
                     ),
                     child: widget.ispassword? IconButton(
                       onPressed: () {
                         ishedin = !ishedin;
                         setState(() {});
                       },
-                      icon: AppImage(path:ishedin? 'Vectoron.svg':'VectorOff.svg')
+                      icon: AppImage(path:ishedin? 'victor.svg':'victoron.svg')
 
                     ):null
                   ),
