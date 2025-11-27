@@ -4,12 +4,12 @@ import 'app_Image.dart';
 
 class AppInpot extends StatefulWidget {
   final String? path, labol;
-  final bool drobDowen;
- final bool ispassword
+  final bool dropDown;
+ final bool isPassword
   ;
 
 
-  const AppInpot({super.key, this.path, this.drobDowen = false, this.labol,  this.ispassword=false});
+  const AppInpot({super.key, this.path, this.dropDown = false, this.labol,  this.isPassword=false});
 
   @override
   State<AppInpot> createState() => _AppInpotState();
@@ -34,7 +34,7 @@ class _AppInpotState extends State<AppInpot> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            if (widget.drobDowen)
+            if (widget.dropDown)
               Padding(
                 padding: EdgeInsetsDirectional.only(end: 10),
                 child: DecoratedBox(
@@ -69,14 +69,14 @@ class _AppInpotState extends State<AppInpot> {
             Expanded(
               child: TextFormField(
 
-                obscureText: widget.ispassword&&ishedin?true:false,
+                obscureText: widget.isPassword&&ishedin?true:false,
                 decoration: InputDecoration(
                   suffixIcon: Padding(
                     padding: const EdgeInsets.symmetric(
                       // horizontal: 12,
                       // vertical: 12,
                     ),
-                    child: widget.ispassword? IconButton(
+                    child: widget.isPassword? IconButton(
                       onPressed: () {
                         ishedin = !ishedin;
                         setState(() {});

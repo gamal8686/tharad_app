@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class AppFieldButtom extends StatelessWidget {
+class AppButtom extends StatelessWidget {
   final String text;
   final double? width;
 final void Function() onPressed;
 
 
-  const AppFieldButtom({super.key,required this.text,required  this.onPressed, this.width});
+  const AppButtom({super.key,required this.text,required  this.onPressed, this.width});
 
   @override
   Widget build(BuildContext context) {

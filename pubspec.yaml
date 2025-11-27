@@ -1,7 +1,7 @@
 name: tharad_app
 description: "A new Flutter project."
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 
 environment:
@@ -13,6 +13,14 @@ dependencies:
     sdk: flutter
   flutter_svg: ^2.2.2
   clipboard: ^2.0.2
+  pin_code_fields: ^8.0.1
+  flutter_screenutil: ^5.9.3
+  dio: ^5.9.0
+  dotted_border: ^2.0.0
+  image_picker: ^1.2.1
+
+
+
 
 
   cupertino_icons: ^1.0.8
@@ -30,9 +38,10 @@ flutter:
 
   uses-material-design: true
   assets:
-    - assets/svg/
+    - assets/icons/
     - assets/png/
-  #   - images/a_dot_ham.jpeg
+    - assets/fonts/
+
 
 
 
@@ -40,18 +49,5 @@ flutter:
   fonts:
     - family: Tajawal
       fonts:
-        - asset: fonts/Tajawal-Regular.ttf
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
+        - asset: assets/fonts/Tajawal-Regular.ttf
+

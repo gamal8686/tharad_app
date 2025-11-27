@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tharad_app/views/create_account.dart';
+import 'package:tharad_app/views/login.dart';
+import 'package:tharad_app/views/otp.dart';
+import 'package:tharad_app/views/profile.dart';
+
+import 'core/logic/goto.dart';
+import 'core/logic/show_masseg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +18,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Color primary = Color(0xff265355);
-    final MaterialColor primarySwatch =
-    MaterialColor(primary.value, <int, Color>{
+    final primary = Color(0xff265355);
+    final primarySwatch = MaterialColor(primary.value, {
       50: primary.withOpacity(.1),
       100: primary.withOpacity(.2),
       200: primary.withOpacity(.3),
@@ -25,46 +31,70 @@ class MyApp extends StatelessWidget {
       800: primary.withOpacity(.9),
       900: primary,
     });
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'tharad',
-      theme: ThemeData(
-          textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(
-              textStyle: TextStyle(fontSize: 12,
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (_, child) {
+        return MaterialApp(
+          scaffoldMessengerKey:messengerKey,
+          navigatorKey: gotokey,
+          debugShowCheckedModeBanner: false,
+          title: 'tharad',
+          theme: ThemeData(
+            textButtonTheme: TextButtonThemeData(
+
+              style: TextButton.styleFrom(
+                foregroundColor: Color(0xffFF1020),
+                textStyle: TextStyle(
+
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Tajawal')
-          )),
-          inputDecorationTheme: InputDecorationTheme(
+                  fontFamily: 'Tajawal',
+                ),
+              ),
+            ),
+
+            inputDecorationTheme: InputDecorationTheme(
               filled: true,
               fillColor: Color(0xffF4F7F6),
 
               border: OutlineInputBorder(
-
-                borderRadius: BorderRadius.circular(8),
-
+                borderRadius: BorderRadius.circular(8.r),
               ),
               enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8))
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+            ),
+            filledButtonTheme: FilledButtonThemeData(
+              style: FilledButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.r),
+                ),
+
+                backgroundColor: Color(0xff265355),
+                fixedSize: Size.fromHeight(50.h),
+                textStyle: TextStyle(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: 'Tajawal',
+                ),
+              ),
+            ),
+            colorScheme: ColorScheme.fromSwatch(primarySwatch: primarySwatch),
+            fontFamily: 'Tajawal',
+            scaffoldBackgroundColor: Colors.white,
+            appBarTheme: AppBarTheme(
+                elevation: 0,
+                scrolledUnderElevation: 0,
+                backgroundColor: Colors.transparent)
           ),
-          filledButtonTheme: FilledButtonThemeData(
-              style: FilledButton.styleFrom(shape: RoundedRectangleBorder(
+          builder: (context, child) =>
+              Directionality(textDirection: TextDirection.ltr, child: child!),
 
-                borderRadius: BorderRadius.circular(8),),
-
-                  backgroundColor: Color(0xff265355),
-                  fixedSize: Size.fromHeight(50),
-                  textStyle: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'Tajawal',
-                  )
-              )),
-          colorScheme: ColorScheme.fromSwatch(primarySwatch: primarySwatch),
-          fontFamily: 'Tajawal',
-          scaffoldBackgroundColor: Colors.white),
-builder: (context, child) => Directionality(textDirection: TextDirection.rtl, child: child!),
-
-      home:CreateAccountview(),
+          home: ProfileViews(),
+        );
+      },
     );
   }
 }
