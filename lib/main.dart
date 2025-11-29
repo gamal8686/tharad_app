@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp(
           scaffoldMessengerKey:messengerKey,
-          navigatorKey: gotokey,
+          navigatorKey: goToKey,
           debugShowCheckedModeBanner: false,
           title: 'tharad',
           theme: ThemeData(
@@ -92,7 +92,7 @@ class MyApp extends StatelessWidget {
           builder: (context, child) =>
               Directionality(textDirection: TextDirection.ltr, child: child!),
 
-          home: ProfileViews(),
+          home: CreateAccountView(),
         );
       },
     );

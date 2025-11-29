@@ -1,16 +1,17 @@
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tharad_app/core/components/app_Image.dart';
+import 'package:tharad_app/core/components/app_image.dart';
 import 'package:tharad_app/core/components/app_back.dart';
-import 'package:tharad_app/core/components/app_buttom.dart';
 import 'package:tharad_app/core/components/app_input.dart';
+import 'package:tharad_app/core/logic/goto.dart';
 
+import '../core/components/app_button.dart';
 import '../core/logic/show_masseg.dart';
+import 'create_account.dart' show CreateAccountViewis, CreateAccountView;
 
 class ProfileViews extends StatefulWidget {
   const ProfileViews({super.key});
@@ -27,7 +28,7 @@ class _ProfileViewsState extends State<ProfileViews> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: AppBack(),
+        leading: AppBackButton (),
         title: Center(child: Text('الملف الشخصي')),
       ),
       body: Stack(
@@ -49,13 +50,14 @@ class _ProfileViewsState extends State<ProfileViews> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadiusDirectional.only(
-                  topEnd: Radius.circular(16.sp),
-                  topStart: Radius.circular(16.sp),
+                  topEnd: Radius.circular(16.r),
+                  topStart: Radius.circular(16.r),
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(20),
+              child: SafeArea(
                 child: SingleChildScrollView(
+                  physics:BouncingScrollPhysics(),
+                  padding: EdgeInsets.all(20.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
@@ -64,54 +66,54 @@ class _ProfileViewsState extends State<ProfileViews> {
                         'اسم المستخدم',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           color: Color(0xff0D1D1E),
                         ),
                       ),
                       SizedBox(height: 4.h),
-
-                      AppInpot(labol: 'thar22'),
+                
+                      AppInput(label: 'thar22'),
                       SizedBox(height: 4.h),
                       Text(
                         'البريد الإلكتروني',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           color: Color(0xff0D1D1E),
                         ),
                       ),
                       SizedBox(height: 4.h),
-
-                      AppInpot(labol: 'Tharad@gmail.com'),
+                
+                      AppInput(label: 'Tharad@gmail.com'),
                       SizedBox(height: 4.h),
-
+                
                       GestureDetector(
                         onTap: () async {
-                          XFile? respons = await ImagePicker().pickImage(
+                          XFile? responsive = await ImagePicker().pickImage(
                             source: ImageSource.gallery,
                           );
-                          if (respons != null) {
-                            selectImage = respons;
+                          if (responsive != null) {
+                            selectImage = responsive;
                             setState(() {});
-
                           }
                         },
                         child: selectImage != null
                             ? ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.file(
-                            File(selectImage!.path),
-                            width: 170.w,
-                            height: 90.h,
-                            fit: BoxFit.cover,
-                          ),
-                        )
+                                borderRadius: BorderRadius.circular(8.r),
+                                child: Image.file(
+                                  File(selectImage!.path),
+                                  width: 170.w,
+                                  height: 90.h,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
                             : DottedBorder(
+                                color: Color(0xff42867B),
                                 borderType: BorderType.Rect,
                                 dashPattern: [20, 5],
-                                strokeWidth: 2,
-                                padding: EdgeInsets.all(16),
-
+                                strokeWidth: 2.w,
+                                padding: EdgeInsets.all(16.w),
+                
                                 child: Container(
                                   width: 350.w,
                                   height: 50.h,
@@ -119,17 +121,17 @@ class _ProfileViewsState extends State<ProfileViews> {
                                     child: Column(
                                       children: [
                                         SizedBox(height: 7.h),
-
+                
                                         AppImage(path: 'camera.svg'),
                                         SizedBox(height: 6.h),
-
+                
                                         Text(
                                           'الملفات المسموح بيها :  JPEG , PNG\nالحد الاقصي : 5MB',
                                           textAlign: TextAlign.center,
-
+                
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
-                                            fontSize: 6,
+                                            fontSize: 6.sp,
                                             color: Color(0xff998C8C),
                                           ),
                                         ),
@@ -139,51 +141,51 @@ class _ProfileViewsState extends State<ProfileViews> {
                                 ),
                               ),
                       ),
-                      SizedBox(height: 6),
-
+                      SizedBox(height: 6.h),
+                
                       Text(
                         'كلمة المرور القديمة',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           color: Color(0xff0D1D1E),
                         ),
                       ),
                       SizedBox(height: 4.h),
-
-                      AppInpot(isPassword: true),
-                      SizedBox(height: 6),
-
+                
+                      AppInput(isPassword: true),
+                      SizedBox(height: 6.h),
+                
                       Text(
                         'كلمة المرور القديمة',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           color: Color(0xff0D1D1E),
                         ),
                       ),
                       SizedBox(height: 4.h),
-
-                      AppInpot(isPassword: true),
-                      SizedBox(height: 6),
-
+                
+                      AppInput(isPassword: true),
+                      SizedBox(height: 6.h),
+                
                       Text(
                         'كلمة المرور القديمة',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           color: Color(0xff0D1D1E),
                         ),
                       ),
                       SizedBox(height: 4.h),
-
-                      AppInpot(isPassword: true),
+                
+                      AppInput(isPassword: true),
                       SizedBox(height: 10.h),
                       Center(
-                        child: AppButtom(
+                        child: AppButton(
                           width: 230.w,
                           onPressed: () {
-                            showmassiage( 'تم حفظ التغيرات بنجاح');
+                            showMessage('تم حفظ التغيرات بنجاح');
                           },
                           text: 'حفظ التغيرات',
                         ),
@@ -191,7 +193,9 @@ class _ProfileViewsState extends State<ProfileViews> {
                       SizedBox(height: 4.h),
                       Center(
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            goTo(CreateAccountView());
+                          },
                           child: Text('تسجيل الخروج'),
                         ),
                       ),

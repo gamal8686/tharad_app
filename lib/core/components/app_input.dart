@@ -1,65 +1,72 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'app_Image.dart';
+import 'app_image.dart';
 
-class AppInpot extends StatefulWidget {
-  final String? path, labol;
+class AppInput extends StatefulWidget {
+  final String? path, label;
   final bool dropDown;
- final bool isPassword
-  ;
+  final bool isPassword;
 
-
-  const AppInpot({super.key, this.path, this.dropDown = false, this.labol,  this.isPassword=false});
+  const AppInput({
+    super.key,
+    this.path,
+    this.dropDown = false,
+    this.label,
+    this.isPassword = false,
+  });
 
   @override
-  State<AppInpot> createState() => _AppInpotState();
+  State<AppInput> createState() => _AppInputState();
 }
 
-class _AppInpotState extends State<AppInpot> {
+class _AppInputState extends State<AppInput> {
   final list = [10, 20, 30];
-  late int selectedCauntryCod;
-  bool ishedin = true;
+  late int selectedCountryCode;
+  bool isHidden = true;
 
   @override
   void initState() {
     super.initState();
-    selectedCauntryCod = list.first;
+    selectedCountryCode = list.first;
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 16),
+        padding: EdgeInsets.only(bottom: 16.w),
         child: Row(
+
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (widget.dropDown)
               Padding(
-                padding: EdgeInsetsDirectional.only(end: 10),
+                padding: EdgeInsetsDirectional.only(end: 10.w),
                 child: DecoratedBox(
+
                   decoration: BoxDecoration(
                     color: Theme.of(
                       context,
                     ).inputDecorationTheme.enabledBorder!.borderSide.color,
                     border: Border.all(),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8.r),
                   ),
                   child: DropdownButton<int>(
                     icon: Padding(
-                      padding: EdgeInsetsDirectional.only(start: 4),
+                      padding: EdgeInsetsDirectional.only(start: 4.w),
                       child: AppImage(path: 'DropdownButton.svg'),
                     ),
 
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    value: selectedCauntryCod,
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    value: selectedCountryCode,
                     items: list
                         .map(
                           (e) => DropdownMenuItem(value: e, child: Text('$e')),
                         )
                         .toList(),
                     onChanged: (value) {
-                      selectedCauntryCod = value!;
+                      selectedCountryCode = value!;
                       setState(() {});
                     },
                   ),
@@ -68,30 +75,30 @@ class _AppInpotState extends State<AppInpot> {
 
             Expanded(
               child: TextFormField(
-
-                obscureText: widget.isPassword&&ishedin?true:false,
+                obscureText: widget.isPassword && isHidden ? true : false,
                 decoration: InputDecoration(
                   suffixIcon: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      // horizontal: 12,
-                      // vertical: 12,
-                    ),
-                    child: widget.isPassword? IconButton(
-                      onPressed: () {
-                        ishedin = !ishedin;
-                        setState(() {});
-                      },
-                      icon: AppImage(path:ishedin? 'victor.svg':'victoron.svg')
-
-                    ):null
+                    padding: const EdgeInsets.symmetric(),
+                    child: widget.isPassword
+                        ? IconButton(
+                            onPressed: () {
+                              isHidden = !isHidden;
+                              setState(() {});
+                            },
+                            icon: AppImage(
+                              path: isHidden
+                                  ? 'visibility.svg'
+                                  : 'visibility_off.svg',
+                            ),
+                          )
+                        : null,
                   ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8.r),
                   ),
 
-                  labelText: widget.labol,
+                  labelText: widget.label,
                   filled: true,
-                  fillColor: Color(0xffD9D9D9),
                   enabledBorder: OutlineInputBorder(),
                 ),
               ),

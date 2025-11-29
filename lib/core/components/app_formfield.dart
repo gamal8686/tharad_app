@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Appformfild extends StatefulWidget {
-  final String? labol;
+class AppFormField
+    extends StatefulWidget {
+  final String? label;
   final bool filled;
   final Color? fillColor;
   final bool suffixIcon;
 final String? hint;
-  const Appformfild({
+  const AppFormField
+      ({
     super.key,
-   this.labol,
+   this.label,
     required this.filled,
     this.fillColor,
     this.suffixIcon = true, this.hint,
   });
 
   @override
-  State<Appformfild> createState() => _AppformfildState();
+  State<AppFormField
+  > createState() => _AppFormFieldState();
 }
 
-class _AppformfildState extends State<Appformfild> {
-  bool iscan = false;
+class _AppFormFieldState extends State<AppFormField
+> {
+  bool isCan = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +36,17 @@ class _AppformfildState extends State<Appformfild> {
           borderRadius: BorderRadius.circular(8),
 
         ),
-labelText: widget.labol,
+labelText: widget.label,
         fillColor: widget.fillColor,
         filled: widget.filled,
         hintText:widget.hint,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r)),
         suffixIcon: widget.suffixIcon
             ? IconButton(
-                icon: Icon(iscan ? Icons.visibility : Icons.visibility_off),
+                icon: Icon(isCan ? Icons.visibility : Icons.visibility_off),
                 onPressed: () {
                   setState(() {
-                    iscan = !iscan;
+                    isCan = !isCan;
                   });
                 },
               )

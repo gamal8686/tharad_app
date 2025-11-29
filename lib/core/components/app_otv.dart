@@ -10,7 +10,7 @@ class AppOtp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 50.r, right: 50.r),
+      padding: EdgeInsets.only(left: 50.w, right: 50.w),
       child: PinCodeTextField(
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
         keyboardType: TextInputType.number,

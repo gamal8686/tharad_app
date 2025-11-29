@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-final gotokey = GlobalKey<NavigatorState>();
-Future<dynamic> goto(Widget page, {bool keepHestore = false, int? sacand}) {
+final goToKey = GlobalKey<NavigatorState>();
+Future<dynamic> goTo(Widget page, {bool keepHistory = false, int? seconds}) {
   return Navigator.pushAndRemoveUntil(
-    gotokey.currentContext!,
+    goToKey.currentContext!,
     MaterialPageRoute(builder: (context) => page),
-    (route) => keepHestore,
+    (route) => keepHistory,
   );
 }
 
