@@ -11,7 +11,6 @@ class AppBackButton  extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pop(context);
       },
       child: Align(
         alignment: Alignment.centerLeft,

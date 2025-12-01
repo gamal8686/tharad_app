@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:tharad_app/core/components/app_image.dart';
 import 'package:tharad_app/core/components/app_button.dart';
+import 'package:tharad_app/core/components/app_image.dart';
 import 'package:tharad_app/core/components/app_otv.dart';
 import 'package:tharad_app/core/logic/goto.dart';
 import 'package:tharad_app/views/profile.dart';

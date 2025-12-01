@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tharad_app/views/create_account.dart';
 import 'package:tharad_app/views/login.dart';
-import 'package:tharad_app/views/otp.dart';
-import 'package:tharad_app/views/profile.dart';
 
 import 'core/logic/goto.dart';
-import 'core/logic/show_masseg.dart';
+import 'core/logic/show_message.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +13,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     final primary = Color(0xff265355);
@@ -92,7 +89,7 @@ class MyApp extends StatelessWidget {
           builder: (context, child) =>
               Directionality(textDirection: TextDirection.ltr, child: child!),
 
-          home: CreateAccountView(),
+          home: LoginView(),
         );
       },
     );

@@ -37,14 +37,12 @@ class _AppInputState extends State<AppInput> {
       child: Padding(
         padding: EdgeInsets.only(bottom: 16.w),
         child: Row(
-
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (widget.dropDown)
               Padding(
                 padding: EdgeInsetsDirectional.only(end: 10.w),
                 child: DecoratedBox(
-
                   decoration: BoxDecoration(
                     color: Theme.of(
                       context,

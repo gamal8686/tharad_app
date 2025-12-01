@@ -4,14 +4,14 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:tharad_app/core/components/app_image.dart';
 import 'package:tharad_app/core/components/app_back.dart';
+import 'package:tharad_app/core/components/app_image.dart';
 import 'package:tharad_app/core/components/app_input.dart';
 import 'package:tharad_app/core/logic/goto.dart';
 
 import '../core/components/app_button.dart';
-import '../core/logic/show_masseg.dart';
-import 'create_account.dart' show CreateAccountViewis, CreateAccountView;
+import '../core/logic/show_message.dart';
+import 'create_account.dart' show  CreateAccountView;
 
 class ProfileViews extends StatefulWidget {
   const ProfileViews({super.key});
@@ -28,7 +28,7 @@ class _ProfileViewsState extends State<ProfileViews> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: AppBackButton (),
+        leading: AppBackButton(),
         title: Center(child: Text('الملف الشخصي')),
       ),
       body: Stack(
@@ -56,7 +56,7 @@ class _ProfileViewsState extends State<ProfileViews> {
               ),
               child: SafeArea(
                 child: SingleChildScrollView(
-                  physics:BouncingScrollPhysics(),
+                  physics: BouncingScrollPhysics(),
                   padding: EdgeInsets.all(20.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -71,7 +71,7 @@ class _ProfileViewsState extends State<ProfileViews> {
                         ),
                       ),
                       SizedBox(height: 4.h),
-                
+
                       AppInput(label: 'thar22'),
                       SizedBox(height: 4.h),
                       Text(
@@ -83,10 +83,10 @@ class _ProfileViewsState extends State<ProfileViews> {
                         ),
                       ),
                       SizedBox(height: 4.h),
-                
+
                       AppInput(label: 'Tharad@gmail.com'),
                       SizedBox(height: 4.h),
-                
+
                       GestureDetector(
                         onTap: () async {
                           XFile? responsive = await ImagePicker().pickImage(
@@ -113,7 +113,7 @@ class _ProfileViewsState extends State<ProfileViews> {
                                 dashPattern: [20, 5],
                                 strokeWidth: 2.w,
                                 padding: EdgeInsets.all(16.w),
-                
+
                                 child: Container(
                                   width: 350.w,
                                   height: 50.h,
@@ -121,14 +121,14 @@ class _ProfileViewsState extends State<ProfileViews> {
                                     child: Column(
                                       children: [
                                         SizedBox(height: 7.h),
-                
+
                                         AppImage(path: 'camera.svg'),
                                         SizedBox(height: 6.h),
-                
+
                                         Text(
                                           'الملفات المسموح بيها :  JPEG , PNG\nالحد الاقصي : 5MB',
                                           textAlign: TextAlign.center,
-                
+
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 6.sp,
@@ -142,7 +142,7 @@ class _ProfileViewsState extends State<ProfileViews> {
                               ),
                       ),
                       SizedBox(height: 6.h),
-                
+
                       Text(
                         'كلمة المرور القديمة',
                         style: TextStyle(
@@ -152,10 +152,10 @@ class _ProfileViewsState extends State<ProfileViews> {
                         ),
                       ),
                       SizedBox(height: 4.h),
-                
+
                       AppInput(isPassword: true),
                       SizedBox(height: 6.h),
-                
+
                       Text(
                         'كلمة المرور القديمة',
                         style: TextStyle(
@@ -165,10 +165,10 @@ class _ProfileViewsState extends State<ProfileViews> {
                         ),
                       ),
                       SizedBox(height: 4.h),
-                
+
                       AppInput(isPassword: true),
                       SizedBox(height: 6.h),
-                
+
                       Text(
                         'كلمة المرور القديمة',
                         style: TextStyle(
@@ -178,7 +178,7 @@ class _ProfileViewsState extends State<ProfileViews> {
                         ),
                       ),
                       SizedBox(height: 4.h),
-                
+
                       AppInput(isPassword: true),
                       SizedBox(height: 10.h),
                       Center(

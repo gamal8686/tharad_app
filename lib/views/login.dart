@@ -1,16 +1,28 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tharad_app/core/logic/goto.dart';
+import 'package:tharad_app/views/otp.dart';
 
 
 import '../core/components/app_image.dart';
 import '../core/components/app_button.dart';
 import '../core/components/app_formfield.dart';
 import '../core/components/app_input.dart';
+import 'create_account.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class LoginView extends StatefulWidget {
 
+
+
+  const LoginView({super.key,});
+
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  bool isClick = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,17 +78,26 @@ class LoginView extends StatelessWidget {
             ),
             SizedBox(height: 6.h),
 
-            AppInput(dropDown: false, isPassword: true),
+            AppInput( isPassword: true),
             SizedBox(height: 8.h),
             Row(
               children: [
-                Container(
-                  height: 15.h,
-                  width: 15.w,
-                  decoration: BoxDecoration(
-                    color: Color(0xffF4F7F6),
-                    border: BoxBorder.all(color: Colors.black, width: 2),
-                    borderRadius: BorderRadius.circular(5.r),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                     isClick = !isClick;
+                    });
+                  },
+                  child: Container(
+                    height: 15.h,
+                    width: 15.w,
+                    decoration: BoxDecoration(
+                      color: Color(0xffF4F7F6),
+                      border: BoxBorder.all(color: Colors.black, width: 2),
+                      borderRadius: BorderRadius.circular(5.r),
+                    ),
+                    child: isClick?Icon(Icons.check,size: 12,):null,
+
                   ),
                 ),
                 SizedBox(width: 5.w),
@@ -84,7 +105,9 @@ class LoginView extends StatelessWidget {
                 Text('تذكرني'),
                 Spacer(),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    goTo(OtpView());
+                  },
                   child: Text('هل نسيت كلمة المرور؟'),
                 ),
               ],
@@ -102,7 +125,9 @@ class LoginView extends StatelessWidget {
                 Text('ليس لديك حساب؟ '),
                 TextButton(
                     style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero)),
-                    onPressed: () {}, child: Text(' إنشاء حساب جديد')),
+                    onPressed: () {
+                      goTo(CreateAccountView());
+                    }, child: Text(' إنشاء حساب جديد')),
               ],
             ),
           ],
